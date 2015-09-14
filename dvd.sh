@@ -1,4 +1,8 @@
-#!/bin/bash 
+#!/bin/bash -x
+
+if [ "${#}" = 0 ] ; then echo " drag and drop a file" ; exit
+else
+
 
 sourcepath="$(dirname "$1")" 
 filename="$(basename "$1")"
@@ -19,4 +23,5 @@ if [[ "${burn}" == "Y" || "${burn}" == "y" ]] ; then
 	hdiutil burn "$1".iso
 else
 	exit
+fi
 fi
