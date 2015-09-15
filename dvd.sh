@@ -12,7 +12,7 @@ echo "Would you like to burn straight to DVD Y or N?"
 read "burn";
 
 export VIDEO_FORMAT=PAL
-ffmpeg -i "$1" -target pal-dvd "$1"_dvd.mpg
+ffmpeg -r 25 -i "$1" -target pal-dvd "$1"_dvd.mpg
 mkdir "$sourcepath/$filenoext"
 mkdir "$sourcepath/$filenoext/dvd"
 dvdauthor -o "$sourcepath/$filenoext/dvd" -t "$1"_dvd.mpg
