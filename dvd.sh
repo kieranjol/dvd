@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 if [ "${#}" = 0 ] ; then echo " drag and drop a file" ; exit
 else
@@ -61,6 +61,8 @@ mkdir "$sourcepath/$filenoext/dvd"
 dvdauthor -o "$sourcepath/$filenoext/dvd" -t "$1"_dvd.mpg
 dvdauthor -o "$sourcepath/$filenoext/dvd" -T
 mkisofs -dvd-video -V IFIARCHIVE -o "$1".iso "$sourcepath/$filenoext/dvd"
+rm -rf "$sourcepath/$filenoext"
+
 
 if [[ "${burn}" == "Y" || "${burn}" == "y" ]] ; then
 	hdiutil burn "$1".iso
@@ -78,6 +80,7 @@ mkdir "$sourcepath/$filenoext/dvd"
 dvdauthor -o "$sourcepath/$filenoext/dvd" -t "$1"_dvd.mpg
 dvdauthor -o "$sourcepath/$filenoext/dvd" -T
 mkisofs -dvd-video -V IFIARCHIVE -o "$1".iso "$sourcepath/$filenoext/dvd"
+rm -rf "$sourcepath/$filenoext"
 
 if [[ "${burn}" == "Y" || "${burn}" == "y" ]] ; then
 	hdiutil burn "$1".iso
